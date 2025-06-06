@@ -277,6 +277,76 @@ const mockMachines: Machine[] = [
   },
 ]
 
+// export function MachinesCatalog() {
+//   const [machines, setMachines] = useState<Machine[]>(mockMachines)
+//   const [filteredMachines, setFilteredMachines] = useState<Machine[]>(mockMachines)
+//   const [searchTerm, setSearchTerm] = useState("")
+//   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+
+//   const handleSearch = (term: string) => {
+//     setSearchTerm(term)
+//     filterMachines(term, machines)
+//   }
+
+//   const handleFilter = (filtered: Machine[]) => {
+//     setFilteredMachines(filtered)
+//   }
+
+//   const filterMachines = (term: string, machineList: Machine[]) => {
+//     if (!term) {
+//       setFilteredMachines(machineList)
+//       return
+//     }
+
+//     const filtered = machineList.filter((machine) => machine.name.toLowerCase().includes(term.toLowerCase()))
+//     setFilteredMachines(filtered)
+//   }
+
+//   const toggleFavorite = (id: number) => {
+//     const updated = machines.map((machine) =>
+//       machine.id === id ? { ...machine, isFavorite: !machine.isFavorite } : machine,
+//     )
+//     setMachines(updated)
+//     filterMachines(searchTerm, updated)
+//   }
+
+//   return (
+//     <div className="min-h-screen bg-slate-50">
+//       {/* Header */}
+//       <div className="bg-white border-b">
+//         <div className="container mx-auto px-4 py-8">
+//           <h1 className="text-4xl font-bold text-slate-900 mb-4">Catálogo de Máquinas Industriais</h1>
+//           <p className="text-xl text-slate-600">Encontre a máquina ideal e solicite as peças que você precisa</p>
+//         </div>
+//       </div>
+
+//       {/* Search */}
+//       <div className="container mx-auto px-4 py-6">
+//         <MachineSearch
+//           onSearch={handleSearch}
+//           resultsCount={filteredMachines.length}
+//           viewMode={viewMode}
+//           onViewModeChange={setViewMode}
+//         />
+//       </div>
+
+//       {/* Content */}
+//       <div className="container mx-auto px-4 pb-12">
+//         <div className="flex flex-col lg:flex-row gap-8">
+//           {/* Filters Sidebar */}
+//           <div className="lg:w-80">
+//             <MachineFilters machines={machines} onFilter={handleFilter} searchTerm={searchTerm} />
+//           </div>
+
+//           {/* Machines Grid */}
+//           <div className="flex-1">
+//             <MachineGrid machines={filteredMachines} viewMode={viewMode} onToggleFavorite={toggleFavorite} />
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   )
+// }
 export function MachinesCatalog() {
   const [machines, setMachines] = useState<Machine[]>(mockMachines)
   const [filteredMachines, setFilteredMachines] = useState<Machine[]>(mockMachines)
@@ -298,7 +368,9 @@ export function MachinesCatalog() {
       return
     }
 
-    const filtered = machineList.filter((machine) => machine.name.toLowerCase().includes(term.toLowerCase()))
+    const filtered = machineList.filter((machine) =>
+      machine.name.toLowerCase().includes(term.toLowerCase()),
+    )
     setFilteredMachines(filtered)
   }
 
@@ -320,21 +392,24 @@ export function MachinesCatalog() {
         </div>
       </div>
 
-      {/* Search */}
+      {/* Search (agora também recebe machines, onFilter e searchTerm) */}
       <div className="container mx-auto px-4 py-6">
         <MachineSearch
           onSearch={handleSearch}
           resultsCount={filteredMachines.length}
           viewMode={viewMode}
           onViewModeChange={setViewMode}
+          machines={machines}
+          onFilter={handleFilter}
+          searchTerm={searchTerm}
         />
       </div>
 
       {/* Content */}
       <div className="container mx-auto px-4 pb-12">
         <div className="flex flex-col lg:flex-row gap-8">
-          {/* Filters Sidebar */}
-          <div className="lg:w-80">
+          {/* Filters Sidebar - oculto em telas menores */}
+          <div className="hidden lg:block lg:w-80">
             <MachineFilters machines={machines} onFilter={handleFilter} searchTerm={searchTerm} />
           </div>
 

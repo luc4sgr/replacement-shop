@@ -67,9 +67,9 @@ export function OrderReview() {
                       {item.machineBrand} • {item.machineModel}
                     </p>
                     <div className="flex items-center gap-2 mt-2">
-                      <Badge variant="outline" className={`text-xs ${urgencyOptions[item.urgency].color}`}>
+                      {/* <Badge variant="outline" className={`text-xs ${urgencyOptions[item.urgency].color}`}>
                         {urgencyOptions[item.urgency].icon} {urgencyOptions[item.urgency].label}
-                      </Badge>
+                      </Badge> */}
                       <div className="flex items-center gap-1 text-xs text-slate-500">
                         <Clock className="w-3 h-3" />
                         {formatDistanceToNow(item.addedAt, { addSuffix: true, locale: ptBR })}
@@ -161,10 +161,10 @@ export function OrderReview() {
             <span className="text-blue-700">Máquinas Diferentes:</span>
             <p className="font-semibold text-blue-900">{uniqueMachines}</p>
           </div>
-          <div>
+          {/* <div>
             <span className="text-blue-700">Urgências Críticas:</span>
             <p className="font-semibold text-blue-900">{criticalItems.length}</p>
-          </div>
+          </div> */}
           <div>
             <span className="text-blue-700">Tempo de Resposta:</span>
             <p className="font-semibold text-blue-900">{criticalItems.length > 0 ? "2-4 horas" : "12-24 horas"}</p>

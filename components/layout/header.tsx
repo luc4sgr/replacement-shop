@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { useCart } from "@/contexts/cart-context"
 import { CartSidebar } from "@/components/cart/cart-sidebar"
 import Logo from "../assets/logo/SB_V.svg"
@@ -35,9 +35,13 @@ export function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             <Link href="/" className="text-slate-700 hover:text-red-600 transition-colors font-medium">
-              Início
+              INICIO
             </Link>
-            <DropdownMenu>
+
+            <Link href="/machines/" className="text-slate-700 hover:text-red-600 transition-colors font-medium">
+              CATÁLOGO
+            </Link>
+            {/* <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center text-slate-700 hover:text-red-600 transition-colors font-medium">
                 Catálogo
                 <ChevronDown className="ml-1 w-4 h-4" />
@@ -64,14 +68,14 @@ export function Header() {
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
-            </DropdownMenu>
+            </DropdownMenu> */}
             <Link href="/contact" className="text-slate-700 hover:text-red-600 transition-colors font-medium">
-              Contato
+              CONTATO
             </Link>
           </nav>
 
           {/* Search Bar - Hidden on small screens */}
-          <div className="hidden md:flex items-center flex-1 max-w-sm lg:max-w-md xl:max-w-lg mx-4 lg:mx-8">
+          {/* <div className="hidden md:flex items-center flex-1 max-w-sm lg:max-w-md xl:max-w-lg mx-4 lg:mx-8">
             <div className="relative w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
               <Input
@@ -79,7 +83,7 @@ export function Header() {
                 className="pl-10 pr-4 bg-slate-50 border-slate-200 focus:border-red-500 text-sm"
               />
             </div>
-          </div>
+          </div> */}
 
           {/* Right Actions */}
           <div className="flex items-center space-x-2 sm:space-x-3">
@@ -98,9 +102,9 @@ export function Header() {
             </DropdownMenu>
 
             {/* Dark Mode Toggle - Hidden on mobile */}
-            <Button variant="ghost" size="sm" onClick={() => setIsDarkMode(!isDarkMode)} className="hidden sm:flex">
+            {/* <Button variant="ghost" size="sm" onClick={() => setIsDarkMode(!isDarkMode)} className="hidden sm:flex">
               {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </Button>
+            </Button> */}
 
             {/* Cart */}
             <Button variant="ghost" size="sm" className="relative" onClick={toggleCart}>
@@ -120,6 +124,7 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-80 sm:w-96">
+                <SheetTitle />
                 <div className="flex flex-col h-full">
                   <div className="flex items-center justify-between pb-4 border-b">
 
@@ -133,12 +138,12 @@ export function Header() {
                   </div>
 
                   {/* Mobile Search */}
-                  <div className="py-4 border-b">
+                  {/* <div className="py-4 border-b">
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
                       <Input placeholder="Buscar máquinas ou peças..." className="pl-10 bg-slate-50 border-slate-200" />
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* Mobile Navigation */}
                   <nav className="flex flex-col space-y-4 py-6 flex-1">
@@ -150,7 +155,15 @@ export function Header() {
                       Início
                     </Link>
 
-                    <div className="space-y-2">
+                    <Link
+                      href="/machines"
+                      className="text-slate-700 hover:text-red-600 transition-colors font-medium py-2"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      Catálogo
+                    </Link>
+
+                    {/* <div className="space-y-2">
                       <div className="text-slate-700 font-medium py-2">Catálogo</div>
                       <div className="pl-4 space-y-2">
                         <Link
@@ -182,7 +195,7 @@ export function Header() {
                           Cilindros Industriais
                         </Link>
                       </div>
-                    </div>
+                    </div> */}
 
                     <Link
                       href="/contact"
@@ -201,12 +214,12 @@ export function Header() {
                         🇧🇷 PT
                       </Button>
                     </div>
-                    <div className="flex items-center justify-between">
+                    {/* <div className="flex items-center justify-between">
                       <span className="text-sm text-slate-600">Tema</span>
                       <Button variant="outline" size="sm" onClick={() => setIsDarkMode(!isDarkMode)}>
                         {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                       </Button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </SheetContent>

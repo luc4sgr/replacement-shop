@@ -74,25 +74,8 @@ export function MachineGrid({ machines, viewMode, onToggleFavorite }: MachineGri
                   {machine.description}
                 </p>
 
-                <div className="flex flex-wrap gap-3 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm text-slate-500">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                    {machine.year}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
-                    {machine.power}
-                  </div>
-                </div>
-
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-                  <div className="flex flex-wrap gap-2">
-                    {machine.specifications.slice(0, 2).map((spec, index) => (
-                      <span key={index} className="text-xs text-slate-500 bg-slate-50 px-2 py-1 rounded">
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
+
 
                   <Button
                     asChild
@@ -163,25 +146,6 @@ export function MachineGrid({ machines, viewMode, onToggleFavorite }: MachineGri
 
             <p className="text-slate-600 mb-4 text-sm leading-relaxed line-clamp-2">{machine.description}</p>
 
-            {/* Quick Specs */}
-            <div className="flex items-center gap-3 sm:gap-4 mb-4 text-xs text-slate-500">
-              <div className="flex items-center gap-1">
-                <Zap className="w-3 h-3" />
-                <span className="truncate">{machine.power}</span>
-              </div>
-            </div>
-
-            {/* Specifications Preview */}
-            <div className="space-y-1 mb-4 sm:mb-6">
-              {machine.specifications.slice(0, 2).map((spec, index) => (
-                <div key={index} className="text-xs text-slate-500 line-clamp-1">
-                  • {spec}
-                </div>
-              ))}
-              {machine.specifications.length > 2 && (
-                <div className="text-xs text-slate-400">+{machine.specifications.length - 2} mais especificações</div>
-              )}
-            </div>
 
             {/* CTA Button */}
             <Button

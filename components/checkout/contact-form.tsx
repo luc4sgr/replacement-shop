@@ -201,7 +201,7 @@ export function ContactForm({ onSubmit, onBack }: ContactFormProps) {
       </div>
 
       {/* Preferences */}
-      <div className="space-y-4">
+      {/* <div className="space-y-4">
         <h3 className="font-semibold text-slate-900">Preferências (Opcional)</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -233,7 +233,7 @@ export function ContactForm({ onSubmit, onBack }: ContactFormProps) {
             Prefiro peças certificadas/originais (pode afetar o preço)
           </Label>
         </div>
-      </div>
+      </div> */}
 
       {/* Action Buttons */}
       <div className="flex gap-4 pt-6 border-t">

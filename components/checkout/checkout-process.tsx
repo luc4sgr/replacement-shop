@@ -179,12 +179,12 @@ export function CheckoutProcess() {
                   <span>Máquinas:</span>
                   <span className="font-medium">{new Set(state.items.map((item) => item.machineId)).size}</span>
                 </div>
-                <div className="flex justify-between text-sm">
+                {/* <div className="flex justify-between text-sm">
                   <span>Urgências críticas:</span>
                   <span className="font-medium text-red-600">
                     {state.items.filter((item) => item.urgency === "critical").length}
                   </span>
-                </div>
+                </div> */}
                 <div className="pt-4 border-t">
                   <p className="text-xs text-slate-600">
                     Você receberá um orçamento detalhado por email em até 24 horas.
